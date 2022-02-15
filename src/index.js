@@ -517,9 +517,9 @@ class ACCNodeWrapper extends EventEmitter {
                 const m_graphics_result = this.ReadGraphics();
                 const m_static_result = this.ReadStatic();
                 const finalResult = {
-                    ...m_physics_result,
-                    ...m_graphics_result,
-                    ...m_static_result,
+                    m_physics_result,
+                    m_graphics_result,
+                    m_static_result,
                 } 
                 return finalResult;
        }
