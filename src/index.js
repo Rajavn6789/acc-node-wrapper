@@ -509,6 +509,22 @@ class ACCNodeWrapper extends EventEmitter {
     }
 
     /**
+     * @name getSharedMemory
+     * @comment This is the init function for the ACC Node Wrapper. This inits the Shared Memory.
+     */
+        getSharedMemory() {
+                const m_physics_result = this.ReadPhysics();
+                const m_graphics_result = this.ReadGraphics();
+                const m_static_result = this.ReadStatic();
+                const finalResult = {
+                    ...m_physics_result,
+                    ...m_graphics_result,
+                    ...m_static_result,
+                } 
+                return finalResult;
+       }
+
+    /**
      * @name disconnectSharedMemory
      * @comment This function disconnects the Wrapper from the Shared Memory.
      */
@@ -520,6 +536,16 @@ class ACCNodeWrapper extends EventEmitter {
         clearInterval(this.SharedMemoryInterval2)
         clearInterval(this.SharedMemoryInterval3)
     }
+
+        /**
+     * @name disconnectSharedMemory
+     * @comment This function disconnects the Wrapper from the Shared Memory.
+     */
+         clearGetSharedMemory() {
+            this.m_physics.closeMapping()
+            this.m_graphics.closeMapping()
+            this.m_static.closeMapping()
+        }
 
     /**
      * @name ReadPhysics
