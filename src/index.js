@@ -735,9 +735,9 @@ class ACCNodeWrapper extends EventEmitter {
         const tcinAction = reader.ReadUInt32()
         const absInAction = reader.ReadUInt32()
 
-        const suspensionDamage = []
+        result.suspensionDamage = []
         for(let i = 0; i < 4; i++)
-            suspensionDamage.push(reader.ReadFloat())
+        result.suspensionDamage.push(reader.ReadFloat())
 
         const tyreTemp = []
         for(let i = 0; i < 4; i++)
